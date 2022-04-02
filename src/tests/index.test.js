@@ -9,7 +9,9 @@ describe("Validate URL", () => {
     const url = "http://localhost:8080/jokenpo/";
     const jsonReceived = validateURL(url.split("jokenpo")[1]);
 
-    expect(jsonReceived.example).toBe("http://localhost:8080/jokenpo/?plays=value");
+    expect(jsonReceived.example).toBe(
+      "http://localhost:8080/jokenpo/?plays=value"
+    );
   });
 
   it("param does not exist in the url", () => {
@@ -23,7 +25,9 @@ describe("Validate URL", () => {
     const url = "http://localhost:8080/jokenpo/?plays=qwe123";
     const jsonReceived = validateURL(url.split("=")[1]);
 
-    expect(jsonReceived.message).toBe("You need to pass a valid value in the url.");
+    expect(jsonReceived.message).toBe(
+      "You need to pass a valid value in the url."
+    );
   });
 
   it("param valid in the url for player vs bot", () => {
@@ -37,60 +41,54 @@ describe("Validate URL", () => {
     const url = "http://localhost:8080/jokenpo/?plays=pedra&play2";
     const jsonReceived = validateURL(url.split("&")[1]);
 
-    expect(jsonReceived.example).toBe("http://localhost:8080/jokenpo/?plays=value&play2=value");
+    expect(jsonReceived.example).toBe(
+      "http://localhost:8080/jokenpo/?plays=value&play2=value"
+    );
   });
 });
 
 describe("Validate param", () => {
-  it("should get the response 200 because it sent a valid parameter"
-  , () => {
+  it("should get the response 200 because it sent a valid parameter", () => {
     const url = "http://localhost:8080/jokenpo/?plays=pedra";
     const param = url.split("=")[1];
     const { status } = validateParam(param);
     expect(status).toBe(200);
   });
 
-  it('should the response 400 because it receives a empty values'
-  , () => {
+  it("should the response 400 because it receives a empty values", () => {
     const url = "http://localhost:8080/jokenpo/?plays=";
     const param = url.split("=")[1];
-    console.log("param", param, !param);
     const { message } = validateParam(param);
     expect(message).toBe("Parameter not defined.");
   });
 
-  it('should the response 400 because it receives an invalid value'
-  , () => {
+  it("should the response 400 because it receives an invalid value", () => {
     const url = "http://localhost:8080/jokenpo/?plays=pedro";
     const param = url.split("=")[1];
     const { message } = validateParam(param);
     expect(message).toBe("Invalid parameter.");
   });
 
-  it("should get the response 200 because it sent a valid parameter for player two"
-  , () => {
+  it("should get the response 200 because it sent a valid parameter for player two", () => {
     const url = "http://localhost:8080/jokenpo/?plays=pedra&play2=pedra";
     const param = url.split("?plays=")[1];
     const { message } = validateParam(param);
     expect(message).toBe("Parameter valid, success!");
   });
 
-  it("should get the response 200 because it sent a valid parameter for player two"
-  , () => {
+  it("should get the response 200 because it sent a valid parameter for player two", () => {
     const url = "http://localhost:8080/jokenpo/?plays=papel&play2=papel";
     const param = url.split("?plays=")[1];
     const { message } = validateParam(param);
     expect(message).toBe("Parameter valid, success!");
   });
 
-  it("should get the response 200 because it sent a valid parameter for player two"
-  , () => {
+  it("should get the response 200 because it sent a valid parameter for player two", () => {
     const url = "http://localhost:8080/jokenpo/?plays=tesoura&play2=tesoura";
     const param = url.split("?plays=")[1];
     const { message } = validateParam(param);
     expect(message).toBe("Parameter valid, success!");
   });
-
 });
 
 describe("App server", () => {
