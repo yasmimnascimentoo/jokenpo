@@ -22,16 +22,30 @@
 
 ### Para rodar o projeto
 
-1. Clone o repositório
+##Local
+
+1. Clone o repositório Frontend na url github.com/yasmimnascimentoo/jokenpo-web
+  - Rode `git checkout master` para mudar de branch.
+  - Rode `npm install` para instalar o projeto e suas dependências.
+  - Rode `npm start` para iniciar a aplicação.
+  - Abra o link(http://localhost:3000/) no navegador.
+
+2. Clone o repositório Backend
   - Rode `git checkout master` para mudar de branch.
   - Rode `npm install` para instalar o projeto e suas dependências.
   - Rode `npm start` para iniciar a aplicação.
   - Abra o link(http://localhost:8080/) no navegador.
+  - Observação ao rodar apenas Backend:   
+    - Para execução dos comandos é necessário completar a url com `/jokenpo/?plays=value` ou `/jokenpo/?plays=value&play2=value`
+    - Exemplo Player vs Bot: http://localhost:8080/jokenpo/?plays=pedra 
+    - Exemplo Player vs Player: http://localhost:8080/jokenpo/?plays=pedra&play2=pedra
 
-3. Acesso pelo heroku ->
+##Acesso Remoto
+
+1. Acesso pelo heroku ->
   - Frontend da aplicação: https://jokenpo-web.herokuapp.com/
   - Backend da aplicação: https://jokenpoo-api.herokuapp.com/
-  - Observação Backend:   
+  - Observação ao rodar apenas Backend:   
     - Para execução dos comandos é necessário completar a url com `/jokenpo/?plays=value` ou `/jokenpo/?plays=value&play2=value`
     - Exemplo Player vs Bot: https://jokenpoo-api.herokuapp.com/jokenpo/?plays=pedra 
     - Exemplo Player vs Player: https://jokenpoo-api.herokuapp.com/jokenpo/?plays=pedra&play2=pedra
